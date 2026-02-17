@@ -1,4 +1,4 @@
-Steps :
+SETUP REPO
 cli pnpm init
 cli pnpm i
 create file pnpm-workspace.yaml > write down apps/** and packages/**
@@ -6,7 +6,7 @@ create file pnpm-lock.yaml
 delete .git file for every folder
 cli pnpm dev > fix port
 
-install biome 
+SETUP LINTER 
 cli  pnpm add -D -E @biomejs/biome -w
 cli pnpm exec biome init
 add in main package.json = "lint": "pnpm exec biome check",
@@ -17,4 +17,8 @@ fix tailwind problem by adding "css": {
 			"tailwindDirectives": true
 		}
 	}
+	
+SETUP HUSKY
+pnpm add --save-dev husky -w
+pnpm exec husky init
 
