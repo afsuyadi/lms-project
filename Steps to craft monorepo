@@ -1,0 +1,20 @@
+Steps :
+cli pnpm init
+cli pnpm i
+create file pnpm-workspace.yaml > write down apps/** and packages/**
+create file pnpm-lock.yaml
+delete .git file for every folder
+cli pnpm dev > fix port
+
+install biome 
+cli  pnpm add -D -E @biomejs/biome -w
+cli pnpm exec biome init
+add in main package.json = "lint": "pnpm exec biome check",
+    "lint:fix": "pnpm exec biome check --write --unsafe"
+cli pnpm lint:fix
+fix tailwind problem by adding "css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	}
+
