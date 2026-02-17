@@ -2,6 +2,7 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 
 const app = new Hono();
+console.log("Environment Variable TEST:", process.env.TEST);
 
 app.get("/", (c) => {
 	return c.text("Hello Hono!");
