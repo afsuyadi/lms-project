@@ -1,0 +1,16 @@
+{
+  "name": "lms-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "admin:dev": "pnpm --filter=admin run dev",
+    "platform:dev": "pnpm --filter=platform run dev",
+    "api:dev": "pnpm --filter=api run dev",
+    "dev": "pnpm --parallel --filter=admin -filter=platform -filter=api run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0"
+}
