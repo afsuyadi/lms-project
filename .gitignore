@@ -196,3 +196,4 @@ count.txt
 .vinxi
 __unconfig*
 todos.json
+**/generated/prisma
