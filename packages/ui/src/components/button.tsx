@@ -4,7 +4,7 @@ interface ButtonProps {
 
 export const Button = ({ label }: ButtonProps) => {
 	return (
-		<button type="button" style={{ background: "black", color: "white" }}>
+		<button type="button" className="bg-red-500">
 			{label}
 		</button>
 	);
