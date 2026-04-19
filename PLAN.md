@@ -1,262 +1,295 @@
-# LMS Full Stack Curriculum
+# LMS Full Stack Curriculum — UI First
 **Stack:** HonoJS (backend) · TanStack Router + Query (frontend)  
+**Approach:** Build UI with mock data first → derive real API needs → connect  
 **Starting point:** Auth/login done  
-**Scope:** Teachers, Students, Classes, Enrollment, Assignments, Grades, Monthly Reports  
 
 ---
 
-## PHASE 1 — Core Backend APIs (Hours 1–10)
+## PHASE 1 — Public Pages (Hours 1–4)
 
-**Hour 1 — Teacher Endpoints**
-- `GET /teachers` — list all teachers
-- `GET /teachers/:id` — single teacher
-- `POST /teachers` — create teacher
-- `PATCH /teachers/:id` — update
-- `DELETE /teachers/:id` — delete
+**Hour 1 — Landing Page: Hero + Nav**
+- Navbar: logo, "Login" CTA button
+- Hero section: headline, subheadline, "Get Started" button
+- Use static mock content for now (school name, tagline)
 
-**Hour 2 — Student Endpoints**
-- `GET /students` — list all students
-- `GET /students/:id` — single student
-- `POST /students` — create student
-- `PATCH /students/:id` — update
-- `DELETE /students/:id` — delete
+**Hour 2 — Landing Page: Features + Teachers Section**
+- "Why choose us" feature cards (3 icons + text blocks)
+- Teachers showcase: grid of teacher cards (photo, name, subject)
+- Use hardcoded mock array of 4–5 teachers
 
-**Hour 3 — Class Endpoints**
-- `GET /classes` — list all classes
-- `GET /classes/:id` — single class
-- `POST /classes` — create class (assign a teacher)
+**Hour 3 — Landing Page: Success Stories + Footer**
+- Student success stories: testimonial cards with quote, name, photo
+- Stats bar: "X Students", "X Teachers", "X Classes"
+- Footer: links, copyright
+
+**Hour 4 — Login Page**
+- Centered card layout: email + password fields, submit button
+- Form validation (empty fields, bad email format)
+- Error state: "Invalid credentials" inline message
+- Loading spinner on submit
+- On success → redirect to `/dashboard` (hardcoded for now)
+
+---
+
+## PHASE 2 — Dashboard UI (Hours 5–9)
+
+**Hour 5 — App Shell & Layout**
+- Sidebar nav: Dashboard, Classes, Assignments, Progress Reports, (Admin: Users)
+- Top header: page title, notification bell icon, user avatar + name
+- Role-aware nav: different items visible per role (use mock role flag)
+- Mobile: collapsible sidebar
+
+**Hour 6 — Notification Panel**
+- Bell icon → slide-out panel
+- Mock notifications list: "New assignment posted", "Grade updated", etc.
+- Unread badge count on bell
+- Mark all as read button
+
+**Hour 7 — Dashboard: Admin View**
+- Summary cards: Total Students, Teachers, Classes, Active Assignments
+- Recent enrollments table (mock data)
+- Quick action buttons: "Add Teacher", "Add Student", "Create Class"
+
+**Hour 8 — Dashboard: Teacher View**
+- "My Classes" cards: class name, student count, next assignment due
+- Recent activity feed: "Student X submitted assignment Y"
+- Upcoming assignments widget
+
+**Hour 9 — Dashboard: Student View**
+- "My Classes" cards: class name, teacher name, progress %
+- Upcoming assignments list with due dates
+- Latest progress report summary card
+- Notifications feed
+
+---
+
+## PHASE 3 — Class & Enrollment UI (Hours 10–13)
+
+**Hour 10 — Classes List Page**
+- Grid of class cards: name, teacher, student count, schedule
+- Admin: "Create Class" button → modal (name, teacher dropdown, description)
+- Search + filter bar (by subject, teacher)
+- Mock data array of 5–6 classes
+
+**Hour 11 — Class Detail Page**
+- Header: class name, teacher info, description
+- Tabs: "Students" | "Assignments" | "Progress Reports"
+- Students tab: enrolled students table, "Enroll Student" button (admin only)
+- All tabs use mock data for now
+
+**Hour 12 — User Management Page (Admin)**
+- Tabs: "Teachers" | "Students"
+- Table: name, email, role, status, actions (edit, deactivate)
+- "Add Teacher" / "Add Student" button → form modal
+- Mock data: 5 teachers, 10 students
+
+**Hour 13 — Enrollment Flow UI**
+- "Enroll Student" → searchable student picker modal
+- Selected students list with remove option
+- Confirm enrollment button
+- Visual: enrolled student card in Students tab updates immediately (optimistic UI mock)
+
+---
+
+## PHASE 4 — Assignment UI (Hours 14–19)
+
+**Hour 14 — Assignment List Page**
+- Teacher view: list of assignments they created, status badge (Draft/Published)
+- Student view: list of assignments with status (Pending/Submitted/Graded)
+- "Create Assignment" button (teacher only)
+- Mock data: 4–5 assignments per class
+
+**Hour 15 — Assignment Builder: Shell**
+- Multi-step form layout: Step 1 Title/Instructions → Step 2 Questions → Step 3 Settings
+- Step indicator at top
+- Assignment title, description, due date, max score fields
+- "Add Question" button to proceed
+
+**Hour 16 — Assignment Builder: Question Types**
+- Question type selector: Multiple Choice | True/False | Short Answer | File Upload
+- Multiple Choice: input for question + 4 answer options, mark correct answer radio
+- True/False: question input + correct answer toggle
+- Short Answer: question input + optional model answer for teacher reference
+- File Upload: question input + accepted file types selector
+
+**Hour 17 — Assignment Builder: Settings & Preview**
+- Settings: time limit toggle, randomize question order toggle, max attempts
+- Preview tab: shows assignment exactly as student will see it
+- "Save Draft" and "Publish" buttons
+
+**Hour 18 — Student Assignment Attempt Page**
+- Shows assignment title, instructions, time limit countdown
+- Renders each question type correctly:
+  - Multiple choice → radio buttons
+  - True/False → toggle buttons
+  - Short answer → textarea
+  - File upload → drag & drop zone
+- Progress bar: "3 of 5 questions answered"
+- "Submit Assignment" button with confirm dialog
+
+**Hour 19 — Assignment Results Page**
+- Teacher view: table of all student submissions, score, submitted at
+- Click a student → see their answers side by side with correct answers
+- Short answer / file upload: manual grade input field per question
+- Student view: their score, correct/incorrect per question, teacher feedback
+
+---
+
+## PHASE 5 — Progress Report UI (Hours 20–23)
+
+**Hour 20 — Progress Report List**
+- Teacher view: list of reports they've created per class, month badges
+- Student view: list of reports they've received, sorted by date
+- "Create Report" button (teacher only)
+- Mock data: 2–3 reports per student
+
+**Hour 21 — Progress Report Builder (Teacher)**
+- Select student from class roster dropdown
+- Select period: month + year picker
+- Predefined criteria rating scale:
+  - Criteria rows: e.g. "Participation", "Assignment Completion", "Understanding", "Behavior"
+  - Each row: 1–5 star/dot rating scale
+  - Optional short note per criteria
+- Overall summary textarea
+- "Save Draft" / "Publish to Student" buttons
+
+**Hour 22 — Progress Report View (Student)**
+- Clean card layout: student name, class, period
+- Each criteria displayed as a labeled progress bar or dot scale
+- Overall summary section
+- Teacher name + date published
+- Print/export button (placeholder)
+
+**Hour 23 — Progress Report: Admin Overview**
+- Class-level report: table of all students + their latest rating per criteria
+- Color coding: green (4–5), yellow (3), red (1–2)
+- Filter by month/year
+- "Export Report" button (placeholder)
+
+---
+
+## PHASE 6 — Backend APIs (Hours 24–33)
+
+> Now that UI is done, we know exactly what we need. Build only what the UI actually calls.
+
+**Hour 24 — Users & Auth Endpoints**
+- `GET /me` — current user profile + role
+- `PATCH /me` — update profile
+- `GET /users` — admin only, list all users with role filter
+- `POST /users` — create teacher or student (admin)
+- `PATCH /users/:id` — update user
+- Attach role to JWT payload
+
+**Hour 25 — Classes & Enrollment Endpoints**
+- `GET /classes` — list (filter by teacher/student based on role)
+- `POST /classes` — create (admin)
 - `PATCH /classes/:id` — update
-- `DELETE /classes/:id` — delete
-
-**Hour 4 — Enrollment Endpoints**
-- `POST /enrollments` — enroll student into a class
+- `GET /classes/:id` — detail with teacher info
+- `GET /classes/:id/students` — enrolled students
+- `POST /enrollments` — enroll student
 - `DELETE /enrollments/:id` — unenroll
-- `GET /classes/:id/students` — students in a class
-- `GET /students/:id/classes` — classes a student is in
 
-**Hour 5 — Assignment Endpoints**
-- `GET /classes/:id/assignments` — list assignments per class
-- `POST /classes/:id/assignments` — create assignment
-- `PATCH /assignments/:id` — update assignment
-- `DELETE /assignments/:id` — delete assignment
+**Hour 26 — Assignment Endpoints**
+- `GET /classes/:id/assignments` — list
+- `POST /classes/:id/assignments` — create with questions array
+- `PATCH /assignments/:id` — update (draft → published)
+- `GET /assignments/:id` — full detail with questions
+- `DELETE /assignments/:id`
 
-**Hour 6 — Grade Endpoints**
-- `POST /grades` — submit a grade (student + assignment)
-- `PATCH /grades/:id` — update grade
-- `GET /students/:id/grades` — all grades for a student
-- `GET /assignments/:id/grades` — all grades for an assignment
+**Hour 27 — Submission Endpoints**
+- `POST /assignments/:id/submissions` — student submits answers
+- `GET /assignments/:id/submissions` — teacher views all submissions
+- `GET /assignments/:id/submissions/:studentId` — single student submission
+- `PATCH /submissions/:id/grade` — teacher grades short answer / file upload
 
-**Hour 7 — Auth Middleware & Role Guards**
-- Attach `requireAuth` middleware to all protected routes
-- Add role field to users (admin, teacher, student)
-- Guard: only teachers can create assignments/grades
-- Guard: only admin can create teachers/classes
+**Hour 28 — Progress Report Endpoints**
+- `POST /reports` — teacher creates report (student, period, criteria ratings, summary)
+- `GET /reports?studentId=&classId=&month=&year=` — filtered list
+- `GET /reports/:id` — single report detail
+- `PATCH /reports/:id` — update / publish
 
-**Hour 8 — Validation & Error Handling**
-- Add Zod validation schemas to all POST/PATCH routes
-- Standardize error responses `{ error, message, status }`
-- Handle 404s, 422 validation errors, 401/403 auth errors
+**Hour 29 — Notification Endpoints**
+- `GET /notifications` — current user's notifications
+- `PATCH /notifications/read` — mark all as read
+- Auto-create notifications on: new assignment published, report published, submission graded
 
-**Hour 9 — Monthly Report Endpoint**
-- `GET /reports/monthly?month=&year=` — aggregate endpoint
-- Returns: per-class attendance summary, average grades, assignment completion rate
-- Returns: per-student grade summary
+**Hour 30 — Dashboard Aggregate Endpoints**
+- `GET /dashboard/admin` — counts + recent activity
+- `GET /dashboard/teacher` — my classes summary + upcoming assignments
+- `GET /dashboard/student` — enrolled classes + upcoming assignments + latest report
 
-**Hour 10 — Backend Polish & Testing**
-- Test all endpoints with Postman/curl
-- Fix any broken relations or missing foreign keys
-- Seed script: generate realistic dummy data for dev
+**Hour 31 — Validation, Guards & Error Handling**
+- Zod schemas for all POST/PATCH bodies
+- Role middleware: teacher-only routes, student-only routes, admin-only routes
+- Standardized error format `{ error, message, status }`
 
----
+**Hour 32 — Monthly Report Aggregate Endpoint**
+- `GET /reports/monthly?month=&year=&classId=` 
+- Returns per-student criteria averages
+- Returns class-wide averages per criteria
 
-## PHASE 2 — Frontend Foundation (Hours 11–18)
-
-**Hour 11 — Project Setup & Layout**
-- TanStack Router file-based routing setup
-- App shell: sidebar nav, top header, main content area
-- Routes scaffold: `/dashboard`, `/teachers`, `/students`, `/classes`, `/reports`
-- Auth guard: redirect to `/login` if no token
-
-**Hour 12 — Auth Pages**
-- `/login` page with form
-- Call `POST /login`, store JWT in localStorage
-- `useAuth` hook: read token, decode role, expose `logout()`
-- Redirect to dashboard on success
-
-**Hour 13 — Teachers Page**
-- `useQuery` → `GET /teachers` → render table
-- Columns: name, email, subject, actions
-- Loading skeleton + error state
-- Search/filter by name (client-side)
-
-**Hour 14 — Teachers CRUD UI**
-- "Add Teacher" button → modal form
-- `useMutation` → `POST /teachers` → invalidate query
-- Edit button → pre-filled modal → `PATCH /teachers/:id`
-- Delete button → confirm dialog → `DELETE /teachers/:id`
-
-**Hour 15 — Students Page + CRUD**
-- Same pattern as teachers: table, search, add/edit/delete modals
-- `useQuery` → `GET /students`
-- Show enrolled class count per student in table
-
-**Hour 16 — Classes Page + CRUD**
-- Classes table: name, teacher, student count
-- Add/edit/delete with modals
-- Dropdown to assign teacher when creating a class
-
-**Hour 17 — Enrollment UI**
-- Inside class detail page `/classes/:id`
-- Tab: "Students" → list enrolled students
-- "Enroll Student" → searchable dropdown of students → `POST /enrollments`
-- Remove button per student → `DELETE /enrollments/:id`
-
-**Hour 18 — Assignments UI**
-- Inside class detail page `/classes/:id`
-- Tab: "Assignments" → list assignments with due date + max score
-- Add/edit/delete assignment forms
-- Role guard: hide add/edit/delete for non-teachers
+**Hour 33 — Seed Script**
+- 1 admin, 3 teachers, 10 students
+- 3 classes with enrollments
+- Assignments with all 4 question types
+- Submissions + grades
+- Progress reports for 2 months
 
 ---
 
-## PHASE 3 — Grades & Reports UI (Hours 19–26)
+## PHASE 7 — Connect UI to Real API (Hours 34–39)
 
-**Hour 19 — Grade Submission UI**
-- Inside assignment detail `/assignments/:id`
-- Table: all enrolled students + their grade input
-- `useMutation` → `POST /grades` or `PATCH /grades/:id`
-- Show saved indicator per row
+**Hour 34 — Auth + /me connection**
+- Swap mock role flag → decode JWT from `/me`
+- Redirect logic based on real role
+- Persist token, auto-logout on 401
 
-**Hour 20 — Student Grade View**
-- `/students/:id/grades` page
-- Table: class → assignment → score → max score → percentage
-- Color code: green ≥ 75%, yellow 50–74%, red < 50%
+**Hour 35 — Dashboard + Notifications**
+- Replace mock dashboard data → `useQuery` to `/dashboard/:role`
+- Wire notification panel → `GET /notifications` + mark-read mutation
 
-**Hour 21 — Dashboard Page**
-- Summary cards: total teachers, students, classes
-- Recent enrollments list
-- Recent assignments list
-- All powered by `useQuery` with stale-time caching
+**Hour 36 — Classes + Enrollment**
+- Replace mock classes → `useQuery` to `GET /classes`
+- Wire enroll/unenroll modals → `useMutation`
+- Wire user management CRUD
 
-**Hour 22 — Monthly Report Page**
-- `/reports` page with month + year picker
-- Call `GET /reports/monthly?month=&year=`
-- Section 1: per-class average grade table
-- Section 2: assignment completion rate bar chart (recharts or similar)
+**Hour 37 — Assignments**
+- Wire assignment builder → `POST /classes/:id/assignments`
+- Wire student attempt → `POST /assignments/:id/submissions`
+- Wire grading table → `PATCH /submissions/:id/grade`
 
-**Hour 23 — Report Drill-down**
-- Click a class in the report → expand student-level breakdown
-- Show each student's average, highest, lowest grade
-- "Export to PDF" button placeholder (wire up in Hour 25)
+**Hour 38 — Progress Reports**
+- Wire report builder → `POST /reports`
+- Wire student report view → `GET /reports?studentId=`
+- Wire admin overview → `GET /reports/monthly`
 
-**Hour 24 — UI Polish Pass**
-- Consistent loading skeletons across all pages
-- Empty states ("No students yet — add one")
-- Toast notifications for all mutations (success/error)
-- Mobile responsive check on all pages
-
-**Hour 25 — PDF Report Export**
-- Install `jsPDF` or use browser print CSS
-- "Export" on report page generates a formatted PDF
-- Include: school name header, month/year, class tables, student summaries
-
-**Hour 26 — Role-Based UI**
-- Admin sees everything
-- Teacher sees only their classes, assignments, grades
-- Student sees only their own classes and grades
-- Hide nav items and action buttons based on role from token
+**Hour 39 — Polish: Loading, Errors, Empty States**
+- Add loading skeletons to every page
+- Error boundaries per route
+- Empty state illustrations ("No assignments yet")
+- Toast notifications for all mutations
 
 ---
 
-## PHASE 4 — Hardening & Deployment (Hours 27–34)
+## PHASE 8 — Deployment & Launch (Hour 40)
 
-**Hour 27 — Frontend Error Boundaries**
-- Wrap routes in React error boundaries
-- 401 → auto logout + redirect to login
-- Network error → friendly retry UI
-
-**Hour 28 — Pagination**
-- Add `?page=&limit=` to teachers, students, classes endpoints
-- Frontend: pagination controls on all tables
-- TanStack Query `keepPreviousData` for smooth page transitions
-
-**Hour 29 — Search & Filter (Server-side)**
-- `GET /students?search=` — backend filters by name/email
-- `GET /classes?teacherId=` — filter by teacher
-- Wire up frontend search inputs to query params
-
-**Hour 30 — Performance Pass**
-- Add `staleTime` and `gcTime` tuning to all queries
-- Prefetch class detail when hovering class row
-- Memoize heavy table renders
-
-**Hour 31 — Backend Deployment**
-- Deploy HonoJS to Railway / Render / Fly.io
-- Set env vars: `DATABASE_URL`, `JWT_SECRET`
-- Test all endpoints against production DB
-
-**Hour 32 — Frontend Deployment**
-- Deploy React app to Vercel / Netlify
-- Set `VITE_API_URL` env var pointing to production backend
-- Verify auth flow end-to-end on production
-
-**Hour 33 — Seed & Demo Data**
-- Run seed script on production DB
-- Create demo accounts: admin, 2 teachers, 5 students
-- Populate 2 classes, assignments, grades, 2 months of reports
-
-**Hour 34 — End-to-End Smoke Test**
-- Log in as each role and verify correct access
-- Submit grades, view report, export PDF
-- Fix any production-only bugs
+**Hour 40 — Deploy & Smoke Test**
+- Deploy HonoJS → Railway / Render
+- Deploy React → Vercel
+- Set env vars both sides
+- Log in as each role, test full flow end to end
+- PDF export wiring (print CSS or jsPDF)
 
 ---
 
-## PHASE 5 — Nice-to-Haves (Hours 35–40+)
-
-**Hour 35** — Attendance tracking endpoints + UI  
-**Hour 36** — Email notifications (enrollment confirmation, grade posted)  
-**Hour 37** — Bulk CSV import for students  
-**Hour 38** — Class schedule / calendar view  
-**Hour 39** — Student portal (separate login flow, read-only view)  
-**Hour 40** — Final UI polish, dark mode, favicon, page titles  
-
----
-
-## Progress Checklist
-
-**Pre-Phase — Auth**
-- ✅ `POST /register`
-- ✅ `POST /login`
-- ✅ `GET /me`
-
-**Phase 1 — Core Backend APIs**
-- ❌ Hour 1 — Teacher Endpoints
-- ❌ Hour 2 — Student Endpoints
-- ❌ Hour 3 — Class Endpoints
-- ❌ Hour 4 — Enrollment Endpoints
-- ❌ Hour 5 — Assignment Endpoints
-- ❌ Hour 6 — Grade Endpoints
-- ❌ Hour 7 — Auth Middleware & Role Guards
-- ❌ Hour 8 — Validation & Error Handling
-- ❌ Hour 9 — Monthly Report Endpoint
-- ❌ Hour 10 — Backend Polish & Testing
-
-**Phase 2 — Frontend Foundation** — not started  
-**Phase 3 — Grades & Reports UI** — not started  
-**Phase 4 — Hardening & Deployment** — not started  
-**Phase 5 — Nice-to-Haves** — not started
-
----
-
-## Quick Reference — Build Order Logic
+## Build Order Summary
 
 ```
-Auth ✓ → Backend CRUD (H1–6) → Guards (H7–8) → Reports API (H9)
-       → Frontend Shell (H11–12) → CRUD UIs (H13–18)
-       → Grades UI (H19–20) → Dashboard + Reports UI (H21–25)
-       → Role UI (H26) → Harden + Deploy (H27–34)
-       → Extras (H35–40)
+Landing (H1–3) → Login (H4) → App Shell (H5)
+→ Dashboard UI mock (H6–9) → Classes UI mock (H10–13)
+→ Assignment UI mock (H14–19) → Progress Report UI mock (H20–23)
+→ Backend APIs (H24–33) → Connect everything (H34–39)
+→ Deploy (H40)
 ```
 
-> **Rule of thumb:** Always finish the backend endpoint *before* building its frontend UI. If you get blocked on UI, skip to the next backend hour and come back.
+> **Rule:** If you get stuck on a UI component, drop a `// TODO: connect to API` comment and move on. The goal in Phase 1–5 is pixel-perfect UI with clean mock data. APIs come after.
