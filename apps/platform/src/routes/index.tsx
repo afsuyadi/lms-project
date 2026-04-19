@@ -1,6 +1,6 @@
 // import { Sidebar, SidebarItem } from "@lmsproject/ui";
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "../components/Hero";
+import { Hero } from "../components/landing/Hero";
 export const Route = createFileRoute("/")({ component: App });
 
 // https://www.youtube.com/watch?v=NFrFhBJPTmI
