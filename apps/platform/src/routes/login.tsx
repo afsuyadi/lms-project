@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login")({
@@ -10,6 +10,7 @@ function LoginPage() {
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
@@ -31,6 +32,9 @@ function LoginPage() {
 				setError(data.message);
 				return;
 			}
+			localStorage.setItem("token", data.body);
+			alert("Login is successful! Redirecting...");
+			navigate({ to: "/dashboard" });
 			console.log(data);
 		} catch {
 			setError("Something went wrong. Please try again.");
