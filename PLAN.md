@@ -51,10 +51,15 @@
 - Tab 2 "Session Attendance": all students × sessions for selected month, gray cell = student not in that group, checkmark = present
 - Gray cell distinguishes "not in this group" from "absent/not submitted"
 
-**Hour 8 — Dashboard: Teacher View**
-- "My Classes" cards: class name, student count, next assignment due
-- Recent activity feed: "Student X submitted assignment Y"
-- Upcoming assignments widget
+**Hour 8 — Dashboard: Teacher View** _(updated 2026-05-01)_
+- Month picker (default: current month)
+- One table per group assigned to the teacher
+- Columns: Student Name | Teacher | Assignment | Report
+- Assignment cell: "Add Assignment" → redirects to `/dashboard/assignments/create` | "Edit Assignment" if exists
+- Report cell: "Add Report" → modal with textarea | "Edit Report" if exists
+- Report can be downloaded by student as PDF (clean layout per month)
+- PDF generation joins Group, Student, Teacher, Subject data at render time — no duplication in Report model
+- Tab 2 "Session Attendance": same structure as Admin View Tab 2, filtered to teacher's own groups
 
 **Hour 9 — Dashboard: Student View**
 - "My Classes" cards: class name, teacher name, progress %
