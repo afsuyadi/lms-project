@@ -54,9 +54,20 @@
 **Hour 8 — Dashboard: Teacher View** _(updated 2026-05-01)_
 - Month picker (default: current month)
 - One table per group assigned to the teacher
-- Columns: Student Name | Teacher | Assignment | Report
-- Assignment cell: "Add Assignment" → redirects to `/dashboard/assignments/create` | "Edit Assignment" if exists
-- Report cell: "Add Report" → modal with textarea | "Edit Report" if exists
+- Columns: Student Name | Assignment | Report
+
+**Assignment cell logic:**
+- `null` → "No Assignment Yet" (all roles)
+- `{ status: "created", score: null }` → teacher/admin: "Created" + "Edit Assignment" button → redirects to `/dashboard/assignments/create`
+- `{ status: "created", score: null }` → student: "Do Assignment" button
+- `{ status: "submitted", score: 90 }` → everyone: "Submitted (90/100)"
+
+**Report cell logic:**
+- `null` → "No Report Yet" (all roles)
+- `{ status: "created" }` → teacher/admin: "Draft" + "Edit Report" button → opens modal with textarea
+- `{ status: "created" }` → student: "No Report Yet" (student cannot see draft)
+- `{ status: "published" }` → everyone: "Published" + student sees download PDF button
+
 - Report can be downloaded by student as PDF (clean layout per month)
 - PDF generation joins Group, Student, Teacher, Subject data at render time — no duplication in Report model
 - Tab 2 "Session Attendance": same structure as Admin View Tab 2, filtered to teacher's own groups
