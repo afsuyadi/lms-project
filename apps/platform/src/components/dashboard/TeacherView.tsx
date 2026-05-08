@@ -92,9 +92,9 @@ export function TeacherView() {
 											) : (
 												<button
 													type="button"
-													className="cursor-pointer bg-red-100 text-red-700 px-3 py-1 text-xs rounded-full"
+													className="cursor-pointer bg-yellow-300 text-red-500 px-3 py-1 text-xs font-bold rounded-full"
 												>
-													Not Submitted
+													Created
 												</button>
 											)}
 										</td>
@@ -115,7 +115,7 @@ export function TeacherView() {
 													type="button"
 													className="cursor-pointer bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full"
 												>
-													Unpublished
+													Created
 												</button>
 											)}
 										</td>
