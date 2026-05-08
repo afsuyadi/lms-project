@@ -67,25 +67,45 @@ export function AdminView() {
 										<td className="px-4 py-3">{d.studentName}</td>
 										<td className="px-4 py-3">{d.teacherName}</td>
 										<td className="px-4 py-3">
-											{d.assignment.submitted === true ? (
-												<span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full ">
+											{d.assignment === null ? (
+												<span className="text-gray-400 text-xs">
+													No Assignment Yet
+												</span>
+											) : d.assignment.status === "submitted" ? (
+												<button
+													type="button"
+													className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full "
+												>
 													Submitted ({d.assignment.score}/100)
-												</span>
+												</button>
 											) : (
-												<span className="bg-red-100 text-red-700 px-3 py-1 text-xs rounded-full">
+												<button
+													type="button"
+													className="cursor-pointer bg-red-100 text-red-700 px-3 py-1 text-xs rounded-full"
+												>
 													Not Submitted
-												</span>
+												</button>
 											)}
 										</td>
 										<td className="px-4 py-3">
-											{d.report.published === true ? (
-												<span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+											{d.report === null ? (
+												<span className="text-gray-400 text-xs">
+													No Report Yet
+												</span>
+											) : d.report.status === "published" ? (
+												<button
+													type="button"
+													className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full"
+												>
 													Published
-												</span>
+												</button>
 											) : (
-												<span className="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">
+												<button
+													type="button"
+													className="cursor-pointer bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full"
+												>
 													Unpublished
-												</span>
+												</button>
 											)}
 										</td>
 									</tr>
