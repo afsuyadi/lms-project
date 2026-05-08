@@ -390,6 +390,18 @@ Payment              → monthly billing record per student per Group
 - Payment status: PENDING → VERIFIED (admin manually verifies)
 - Monthly cycle: Teacher creates Assignment → Students answer → Teacher writes Report → Student sees score + report
 
+### User & Role Architecture
+
+- No separate Admin table — `role: "admin"` on User is sufficient, admins have no extra profile data
+- Teacher and Student have separate profile tables linked via `userId`
+- IDs everywhere should be **strings** (cuid/uuid) — never integers, to match Prisma defaults and avoid mock-to-real mismatch in Phase 7
+
+```
+User    → id (cuid), email, password, role ("admin" | "teacher" | "student")
+Teacher → id (cuid), userId, name
+Student → id (cuid), userId, name
+```
+
 ### Key Models (for Prisma schema in Phase 6)
 
 **Group**
