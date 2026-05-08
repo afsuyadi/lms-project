@@ -1,3 +1,4 @@
+import { Pencil, Plus } from "lucide-react";
 import { useState } from "react";
 import { mockAttendanceData, mockDataProgress } from "../../lib/mockData";
 
@@ -68,44 +69,92 @@ export function AdminView() {
 										<td className="px-4 py-3">{d.teacherName}</td>
 										<td className="px-4 py-3">
 											{d.assignment === null ? (
-												<span className="text-gray-400 text-xs">
-													No Assignment Yet
-												</span>
+												<div className="flex items-center gap-2">
+													<span className="text-gray-400 text-xs">
+														No Assignment Yet
+													</span>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-green-300 rounded-full"
+													>
+														<Plus size={20} />
+													</button>
+												</div>
 											) : d.assignment.status === "submitted" ? (
-												<button
-													type="button"
-													className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full "
-												>
-													Submitted ({d.assignment.score}/100)
-												</button>
+												<div className="flex items-center gap-2">
+													<button
+														type="button"
+														className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full "
+													>
+														Submitted ({d.assignment.score}/100)
+													</button>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-yellow-300 rounded-full"
+													>
+														<Pencil size={18} />
+													</button>
+												</div>
 											) : (
-												<button
-													type="button"
-													className="cursor-pointer bg-red-100 text-red-700 px-3 py-1 text-xs rounded-full"
-												>
-													Not Submitted
-												</button>
+												<div className="flex items-center gap-2">
+													<button
+														type="button"
+														className="cursor-pointer  bg-yellow-300 text-red-500 px-3 py-1 text-xs font-bold rounded-full"
+													>
+														Created
+													</button>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-yellow-300 rounded-full"
+													>
+														<Pencil size={18} />
+													</button>
+												</div>
 											)}
 										</td>
 										<td className="px-4 py-3">
 											{d.report === null ? (
-												<span className="text-gray-400 text-xs">
-													No Report Yet
-												</span>
+												<div className="flex items-center gap-2">
+													<span className="text-gray-400 text-xs">
+														No Report Yet
+													</span>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-green-300 rounded-full"
+													>
+														<Plus size={20} />
+													</button>
+												</div>
 											) : d.report.status === "published" ? (
-												<button
-													type="button"
-													className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full"
-												>
-													Published
-												</button>
+												<div className="flex items-center gap-2">
+													<button
+														type="button"
+														className="cursor-pointer bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full"
+													>
+														Published
+													</button>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-yellow-300 rounded-full"
+													>
+														<Pencil size={18} />
+													</button>
+												</div>
 											) : (
-												<button
-													type="button"
-													className="cursor-pointer bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full"
-												>
-													Unpublished
-												</button>
+												<div className="flex items-center gap-2">
+													<button
+														type="button"
+														className="cursor-pointer bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full"
+													>
+														Created
+													</button>
+													<button
+														type="button"
+														className="cursor-pointer hover:bg-yellow-300 rounded-full"
+													>
+														<Pencil size={18} />
+													</button>
+												</div>
 											)}
 										</td>
 									</tr>
