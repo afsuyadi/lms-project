@@ -8,8 +8,12 @@ export const mockDataProgress = [
 		teacherName: "Ustadzah Lisna",
 		month: 5,
 		year: 2026,
-		assignment: { title: "Quiz Tahsin - May", score: 85, submitted: true },
-		report: { published: true },
+		assignment: {
+			title: "Quiz Tahsin - May",
+			score: null,
+			status: "created",
+		},
+		report: { status: "published" },
 	},
 	{
 		studentId: "st-01",
@@ -20,8 +24,8 @@ export const mockDataProgress = [
 		teacherName: "Ustadzah Siska",
 		month: 5,
 		year: 2026,
-		assignment: { title: "Quiz Tahfizh - May", score: 90, submitted: true },
-		report: { published: true },
+		assignment: null,
+		report: { status: "published" },
 	},
 	{
 		studentId: "st-02",
@@ -34,10 +38,10 @@ export const mockDataProgress = [
 		year: 2026,
 		assignment: {
 			title: "Quiz Bahasa Inggris - May",
-			score: 70,
-			submitted: true,
+			score: null,
+			status: "created",
 		},
-		report: { published: true },
+		report: null,
 	},
 	{
 		studentId: "st-03",
@@ -51,9 +55,9 @@ export const mockDataProgress = [
 		assignment: {
 			title: "Quiz Bahasa Arab - May",
 			score: 85,
-			submitted: false,
+			status: "submitted",
 		},
-		report: { published: false },
+		report: { status: "created" },
 	},
 ];
 
