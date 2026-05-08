@@ -390,6 +390,17 @@ Payment              → monthly billing record per student per Group
 - Payment status: PENDING → VERIFIED (admin manually verifies)
 - Monthly cycle: Teacher creates Assignment → Students answer → Teacher writes Report → Student sees score + report
 
+### Mock ID Convention
+```
+userId:    usr-{seq}              → usr-01, usr-02
+teacherId: te-{subject}-{seq}    → te-th-01, te-tz-01, te-en-01, te-ar-01
+studentId: st-{seq}              → st-01, st-02, st-03
+groupId:   gr-{subject}-{seq}    → gr-th-01, gr-tz-01, gr-en-01, gr-ar-01
+subjectId: sub-{subject}         → sub-th, sub-tz, sub-en, sub-ar
+sessionId: s-{subject}-{seq}     → s-th-01, s-en-01
+```
+Subject codes: `th` = Tahsin, `tz` = Tahfizh, `en` = English, `ar` = Arabic
+
 ### User & Role Architecture
 
 - No separate Admin table — `role: "admin"` on User is sufficient, admins have no extra profile data
