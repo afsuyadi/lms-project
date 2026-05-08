@@ -6,7 +6,7 @@ export const mockUser: {
 } =
 	// { id:1, role: "admin", name: "Ahmad" };
 	{
-		id: "u-01",
+		id: "usr-01",
 		teacherId: "te-th-01",
 		role: "teacher",
 		name: "Ustadzah Lisna",
