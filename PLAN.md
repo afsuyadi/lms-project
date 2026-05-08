@@ -71,11 +71,15 @@
 
 ## PHASE 3 — Class & Enrollment UI (Hours 10–13)
 
-**Hour 10 — Classes List Page**
-- Grid of class cards: name, teacher, student count, schedule
-- Admin: "Create Class" button → modal (name, teacher dropdown, description)
+**Hour 10 — Classes List Page** _(updated 2026-05-01)_
+- Accessible by all roles (admin, teacher, student) at `/classes`
+- Grid of class cards: group name, teacher name, student count
+- Role-based differences:
+  - Admin: can create, edit, deactivate groups
+  - Teacher: read-only view
+  - Student: sees a "Join" button per group → redirects to enrollment form
 - Search + filter bar (by subject, teacher)
-- Mock data array of 5–6 classes
+- Mock data array of 5–6 groups
 
 **Hour 11 — Class Detail Page**
 - Header: class name, teacher info, description
