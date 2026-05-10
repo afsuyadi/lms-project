@@ -320,8 +320,8 @@
 - ✅ Hour 5 — App Shell & Layout
 - ✅ Hour 6 — Notification Panel
 - ✅ Hour 7 — Dashboard: Admin View (completed 2026-05-01)
-- 🔄 Hour 8 — Dashboard: Teacher View (in progress — tab switcher + attendance tab done, Tab 1 assignment/report buttons pending)
-- ❌ Hour 9 — Dashboard: Student View
+- ✅ Hour 8 — Dashboard: Teacher View (completed 2026-05-01)
+- ✅ Hour 9 — Dashboard: Student View (completed 2026-05-01)
 
 **Phase 3 — Class & Enrollment UI**
 - ❌ Hour 10 — Classes List Page
