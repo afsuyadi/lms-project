@@ -10,8 +10,8 @@ export const mockDataProgress = [
 		year: 2026,
 		assignment: {
 			title: "Quiz Tahsin - May",
-			score: null,
-			status: "created",
+			score: 80,
+			status: "submitted",
 		},
 		report: { status: "published" },
 	},
@@ -57,7 +57,7 @@ export const mockDataProgress = [
 			score: 85,
 			status: "submitted",
 		},
-		report: { status: "created" },
+		report: { status: "published" },
 	},
 ];
 
