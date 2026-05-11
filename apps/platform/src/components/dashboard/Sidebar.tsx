@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 const navItems = [
 	{ id: 1, icon: "📊", title: "Dashboard", path: "/dashboard" },
-	{ id: 2, icon: "📚", title: "Classes", path: "/dashboard/classes" },
+	{ id: 2, icon: "📚", title: "Groups", path: "/dashboard/Groups" },
 	{
 		id: 3,
 		icon: "📝",

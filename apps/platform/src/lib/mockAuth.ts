@@ -8,7 +8,7 @@ export const mockUser: {
 	// { id: 1, role: "admin", name: "Ahmad" };
 	// {
 	// 	id: "usr-01",
-	// 	teacherId: "te-th-01",
+	// 	teacherId: "te-01",
 	// 	role: "teacher",
 	// 	name: "Ustadzah Lisna",
 	// };

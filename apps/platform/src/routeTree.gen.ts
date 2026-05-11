@@ -14,7 +14,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard/Profile'
-import { Route as DashboardClassesRouteImport } from './routes/dashboard/Classes'
+import { Route as DashboardGroupsRouteImport } from './routes/dashboard/Groups'
 import { Route as DashboardAssignmentsRouteImport } from './routes/dashboard/Assignments'
 
 const LoginRoute = LoginRouteImport.update({
@@ -42,9 +42,9 @@ const DashboardProfileRoute = DashboardProfileRouteImport.update({
   path: '/Profile',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardClassesRoute = DashboardClassesRouteImport.update({
-  id: '/Classes',
-  path: '/Classes',
+const DashboardGroupsRoute = DashboardGroupsRouteImport.update({
+  id: '/Groups',
+  path: '/Groups',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardAssignmentsRoute = DashboardAssignmentsRouteImport.update({
@@ -58,7 +58,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Classes': typeof DashboardClassesRoute
+  '/dashboard/Groups': typeof DashboardGroupsRoute
   '/dashboard/Profile': typeof DashboardProfileRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -66,7 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Classes': typeof DashboardClassesRoute
+  '/dashboard/Groups': typeof DashboardGroupsRoute
   '/dashboard/Profile': typeof DashboardProfileRoute
   '/dashboard': typeof DashboardIndexRoute
 }
@@ -76,7 +76,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Classes': typeof DashboardClassesRoute
+  '/dashboard/Groups': typeof DashboardGroupsRoute
   '/dashboard/Profile': typeof DashboardProfileRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
@@ -87,7 +87,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/dashboard/Assignments'
-    | '/dashboard/Classes'
+    | '/dashboard/Groups'
     | '/dashboard/Profile'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
@@ -95,7 +95,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/dashboard/Assignments'
-    | '/dashboard/Classes'
+    | '/dashboard/Groups'
     | '/dashboard/Profile'
     | '/dashboard'
   id:
@@ -104,7 +104,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/dashboard/Assignments'
-    | '/dashboard/Classes'
+    | '/dashboard/Groups'
     | '/dashboard/Profile'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
@@ -152,11 +152,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardProfileRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/dashboard/Classes': {
-      id: '/dashboard/Classes'
-      path: '/Classes'
-      fullPath: '/dashboard/Classes'
-      preLoaderRoute: typeof DashboardClassesRouteImport
+    '/dashboard/Groups': {
+      id: '/dashboard/Groups'
+      path: '/Groups'
+      fullPath: '/dashboard/Groups'
+      preLoaderRoute: typeof DashboardGroupsRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/Assignments': {
@@ -171,14 +171,14 @@ declare module '@tanstack/react-router' {
 
 interface DashboardRouteChildren {
   DashboardAssignmentsRoute: typeof DashboardAssignmentsRoute
-  DashboardClassesRoute: typeof DashboardClassesRoute
+  DashboardGroupsRoute: typeof DashboardGroupsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardAssignmentsRoute: DashboardAssignmentsRoute,
-  DashboardClassesRoute: DashboardClassesRoute,
+  DashboardGroupsRoute: DashboardGroupsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }

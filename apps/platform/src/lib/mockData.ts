@@ -2,9 +2,11 @@ export const mockDataProgress = [
 	{
 		studentId: "st-01",
 		studentName: "Maryam",
-		groupId: "gr-th-01",
-		groupName: "Tahsin Dasar",
-		teacherId: "te-th-01",
+		subjectId: "sub-01",
+		subjectName: "Tahsin Dasar",
+		groupId: "gr-01",
+		groupName: "Tahsin Dasar - Grup 1",
+		teacherId: "te-01",
 		teacherName: "Ustadzah Lisna",
 		month: 5,
 		year: 2026,
@@ -18,9 +20,11 @@ export const mockDataProgress = [
 	{
 		studentId: "st-01",
 		studentName: "Maryam",
-		groupId: "gr-tz-01",
-		groupName: "Tahfizh Dasar",
-		teacherId: "te-tz-01",
+		subjectId: "sub-02",
+		subjectName: "Tahfizh Dasar",
+		groupId: "gr-02",
+		groupName: "Tahfizh Dasar - Grup 1",
+		teacherId: "te-03",
 		teacherName: "Ustadzah Siska",
 		month: 5,
 		year: 2026,
@@ -30,9 +34,11 @@ export const mockDataProgress = [
 	{
 		studentId: "st-02",
 		studentName: "Ibrahim",
-		groupId: "gr-en-01",
-		groupName: "Bahasa Inggris Dasar",
-		teacherId: "te-en-01",
+		subjectId: "sub-03",
+		subjectName: "Bahasa Inggris Dasar",
+		groupId: "gr-03",
+		groupName: "Bahasa Inggris Dasar - 01",
+		teacherId: "te-02",
 		teacherName: "Mr. Mulki",
 		month: 5,
 		year: 2026,
@@ -46,9 +52,11 @@ export const mockDataProgress = [
 	{
 		studentId: "st-03",
 		studentName: "Ahmad",
-		groupId: "gr-ar-01",
-		groupName: "Bahasa Arab Dasar",
-		teacherId: "te-ar-01",
+		subjectId: "sub-04",
+		subjectName: "Bahasa Arab Dasar",
+		groupId: "gr-04",
+		groupName: "Bahasa Arab Dasar - Grup 1",
+		teacherId: "te-04",
 		teacherName: "Ustadzah Afifah",
 		month: 5,
 		year: 2026,
@@ -62,15 +70,17 @@ export const mockDataProgress = [
 ];
 
 const mockGroupTahsin1 = {
-	groupId: "gr-th-01",
-	groupName: "Tahsin Dasar 01",
+	groupId: "gr-01",
+	groupName: "Tahsin Dasar - 01",
+	subjectId: "sub-01",
+	subjectName: "Tahsin Dasar",
 	month: 5,
 	year: 2026,
 	sessions: [
 		{
-			sessionId: "s-th-01",
+			sessionId: "s-01",
 			date: "2026-05-05",
-			teacherId: "te-th-01",
+			teacherId: "te-01",
 			teacherName: "Ustadzah Lisna",
 			attendance: [
 				{ studentId: "st-01", studentName: "Maryam", isPresent: true },
@@ -78,9 +88,9 @@ const mockGroupTahsin1 = {
 			],
 		},
 		{
-			sessionId: "s-th-02",
+			sessionId: "s-02",
 			date: "2026-05-12",
-			teacherId: "te-th-01",
+			teacherId: "te-01",
 			teacherName: "Ustadzah Lisna",
 			attendance: [
 				{ studentId: "st-01", studentName: "Maryam", isPresent: true },
@@ -88,9 +98,9 @@ const mockGroupTahsin1 = {
 			],
 		},
 		{
-			sessionId: "s-th-03",
+			sessionId: "s-03",
 			date: "2026-05-19",
-			teacherId: "te-th-01",
+			teacherId: "te-01",
 			teacherName: "Ustadzah Lisna",
 			attendance: [
 				{ studentId: "st-01", studentName: "Maryam", isPresent: true },
@@ -98,9 +108,9 @@ const mockGroupTahsin1 = {
 			],
 		},
 		{
-			sessionId: "s-th-04",
+			sessionId: "s-04",
 			date: "2026-05-26",
-			teacherId: "te-th-01",
+			teacherId: "te-01",
 			teacherName: "Ustadzah Lisna",
 			attendance: [
 				{ studentId: "st-01", studentName: "Maryam", isPresent: true },
@@ -111,42 +121,44 @@ const mockGroupTahsin1 = {
 };
 
 const mockGroupEnglish1 = {
-	groupId: "gr-en-01",
-	groupName: "Bahasa Inggris 01",
+	groupId: "gr-03",
+	groupName: "Bahasa Inggris Dasar - 01",
+	subjectId: "sub-03",
+	subjectName: "Bahasa Inggris Dasar",
 	month: 5,
 	year: 2026,
 	sessions: [
 		{
-			sessionId: "s-en-01",
+			sessionId: "s-05",
 			date: "2026-05-08",
-			teacherId: "te-en-01",
+			teacherId: "te-02",
 			teacherName: "Mr. Mulki",
 			attendance: [
 				{ studentId: "st-03", studentName: "Ahmad", isPresent: true },
 			],
 		},
 		{
-			sessionId: "s-en-02",
+			sessionId: "s-06",
 			date: "2026-05-15",
-			teacherId: "te-en-01",
+			teacherId: "te-02",
 			teacherName: "Mr. Mulki",
 			attendance: [
 				{ studentId: "st-03", studentName: "Ahmad", isPresent: true },
 			],
 		},
 		{
-			sessionId: "s-en-03",
+			sessionId: "s-07",
 			date: "2026-05-22",
-			teacherId: "te-en-01",
+			teacherId: "te-02",
 			teacherName: "Mr. Mulki",
 			attendance: [
 				{ studentId: "st-03", studentName: "Ahmad", isPresent: true },
 			],
 		},
 		{
-			sessionId: "s-en-04",
+			sessionId: "s-08",
 			date: "2026-05-29",
-			teacherId: "te-en-01",
+			teacherId: "te-02",
 			teacherName: "Mr. Mulki",
 			attendance: [
 				{ studentId: "st-03", studentName: "Ahmad", isPresent: true },
