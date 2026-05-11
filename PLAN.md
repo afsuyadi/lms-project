@@ -324,7 +324,7 @@
 - ✅ Hour 9 — Dashboard: Student View (completed 2026-05-01)
 
 **Phase 3 — Class & Enrollment UI**
-- ❌ Hour 10 — Classes List Page
+- 🔄 Hour 10 — Classes List Page (in progress — route confirmed at routes/dashboard/Classes.tsx, inside dashboard layout)
 - ❌ Hour 11 — Class Detail Page
 - ❌ Hour 12 — User Management Page (Admin)
 - ❌ Hour 13 — Enrollment Flow UI
@@ -403,14 +403,13 @@ Payment              → monthly billing record per student per Group
 
 ### Mock ID Convention
 ```
-userId:    usr-{seq}              → usr-01, usr-02
-teacherId: te-{subject}-{seq}    → te-th-01, te-tz-01, te-en-01, te-ar-01
-studentId: st-{seq}              → st-01, st-02, st-03
-groupId:   gr-{subject}-{seq}    → gr-th-01, gr-tz-01, gr-en-01, gr-ar-01
-subjectId: sub-{subject}         → sub-th, sub-tz, sub-en, sub-ar
-sessionId: s-{subject}-{seq}     → s-th-01, s-en-01
+userId:    usr-{seq}   → usr-01, usr-02
+teacherId: te-{seq}    → te-01, te-02, te-03
+studentId: st-{seq}    → st-01, st-02, st-03
+groupId:   gr-{seq}    → gr-01, gr-02, gr-03
+subjectId: sub-{seq}   → sub-01, sub-02, sub-03
+sessionId: s-{seq}     → s-01, s-02, s-03
 ```
-Subject codes: `th` = Tahsin, `tz` = Tahfizh, `en` = English, `ar` = Arabic
 
 ### User & Role Architecture
 
