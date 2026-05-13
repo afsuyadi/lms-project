@@ -168,3 +168,86 @@ const mockGroupEnglish1 = {
 };
 
 export const mockAttendanceData = [mockGroupTahsin1, mockGroupEnglish1];
+
+export const mockSubjects = [
+	{ subjectId: "sub-01", subjectName: "Tahsin" },
+	{ subjectId: "sub-02", subjectName: "Tahfizh" },
+	{ subjectId: "sub-03", subjectName: "Bahasa Inggris" },
+	{ subjectId: "sub-04", subjectName: "Bahasa Arab" },
+	{ subjectId: "sub-05", subjectName: "Calistung" },
+];
+
+export const mockTeachers = [
+	{ teacherId: "te-01", teacherName: "Ustadzah Lisna" },
+	{ teacherId: "te-02", teacherName: "Mister Mulki" },
+	{ teacherId: "te-03", teacherName: "Ustadzah Siska" },
+	{ teacherId: "te-04", teacherName: "Ustadzah Afifah" },
+	{ teacherId: "te-05", teacherName: "Ustadzah Ghalda" },
+];
+
+export const mockStudents = [
+	{ studentId: "st-01", studentName: "Maryam" },
+	{ studentId: "st-02", studentName: "Ibrahim" },
+	{ studentId: "st-03", studentName: "Ahmad" },
+	{ studentId: "st-04", studentName: "Dawud" },
+	{ studentId: "st-05", studentName: "Ilyas" },
+];
+
+export const mockGroups = [
+	{
+		groupId: "gr-01",
+		groupName: "Tahsin Dasar - 01",
+		subjectId: "sub-01",
+		subjectName: "Tahsin",
+		teacherId: "te-01",
+		teacherName: "Ustadzah Lisna",
+		isActive: true,
+		studentIds: [
+			{ studentId: "st-01", studentName: "Maryam" },
+			{ studentId: "st-02", studentName: "Ibrahim" },
+		],
+	},
+	{
+		groupId: "gr-02",
+		groupName: "Tahfizh Dasar - 01",
+		subjectId: "sub-02",
+		subjectName: "Tahfizh",
+		teacherId: "te-03",
+		teacherName: "Ustadzah Siska",
+		isActive: true,
+		studentIds: [
+			{ studentId: "st-01", studentName: "Maryam" },
+			{ studentId: "st-02", studentName: "Ibrahim" },
+		],
+	},
+	{
+		groupId: "gr-03",
+		groupName: "Bahasa Inggris Dasar - 01",
+		subjectId: "sub-03",
+		subjectName: "Bahasa Inggris",
+		teacherName: "Mister Mulki",
+		isActive: true,
+		teacherId: "te-02",
+		studentIds: [{ studentId: "st-03", studentName: "Ahmad" }],
+	},
+	{
+		groupId: "gr-04",
+		groupName: "Bahasa Arab Dasar - 01",
+		subjectId: "sub-04",
+		subjectName: "Bahasa Arab",
+		teacherName: "Ustadzah Afifah",
+		isActive: true,
+		teacherId: "te-04",
+		studentIds: [{ studentId: "st-04", studentName: "Dawud" }],
+	},
+	{
+		groupId: "gr-05",
+		groupName: "Calistung Dasar - 01",
+		subjectId: "sub-05",
+		subjectName: "Calistung",
+		teacherName: "Ustadzah Ghalda",
+		isActive: false,
+		teacherId: "te-01",
+		studentIds: [{ studentId: "st-05", studentName: "Ilyas" }],
+	},
+];
