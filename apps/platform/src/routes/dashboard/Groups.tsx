@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Ban, Pencil, PlusCircle } from "lucide-react";
 import { useState } from "react";
-import { mockGroups, mockSubjects } from "../../lib/mockData";
+import { mockGroups, mockSubjects, mockTeachers } from "../../lib/mockData";
 
 export const Route = createFileRoute("/dashboard/Groups")({
 	component: RouteComponent,
@@ -10,6 +10,7 @@ export const Route = createFileRoute("/dashboard/Groups")({
 function CreateGroupModal({ onClose }: { onClose: () => void }) {
 	const [groupName, setGroupName] = useState("");
 	const [subjectId, setSubjectId] = useState(0);
+	const [teacherId, setTeacherId] = useState(0);
 
 	return (
 		<div
@@ -42,6 +43,18 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 							{mockSubjects.map((s) => (
 								<option key={s.subjectId} value={s.subjectId}>
 									{s.subjectName}
+								</option>
+							))}
+						</select>
+						<select
+							className="border rounded-md p-2 text-sm"
+							value={teacherId}
+							onChange={(e) => setTeacherId(e.target.value)}
+						>
+							<option value="">Select teacher</option>
+							{mockTeachers.map((t) => (
+								<option key={t.teacherId} value={t.teacherId}>
+									{t.teacherName}
 								</option>
 							))}
 						</select>
