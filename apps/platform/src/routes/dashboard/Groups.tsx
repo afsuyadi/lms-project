@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Ban, Pencil, PlusCircle } from "lucide-react";
 import { useState } from "react";
-import { mockGroups } from "../../lib/mockData";
+import { mockGroups, mockSubjects } from "../../lib/mockData";
 
 export const Route = createFileRoute("/dashboard/Groups")({
 	component: RouteComponent,
 });
 
 function CreateGroupModal({ onClose }: { onClose: () => void }) {
-	const [_groupName, _setGroupName] = useState("");
+	const [groupName, setGroupName] = useState("");
+	const [subjectId, setSubjectId] = useState(0);
 
 	return (
 		<div
@@ -25,8 +26,25 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 			>
 				<h2>Create Group</h2>
 				<form>
-					<div>
-						<input className="border rounded-md p-2 text-sm" />
+					<div className="flex flex-col gap-2">
+						<input
+							className="border rounded-md p-2 text-sm"
+							placeholder="e.g. Tahsin Dasar 01"
+							value={groupName}
+							onChange={(e) => setGroupName(e.target.value)}
+						/>
+						<select
+							className="border rounded-md p-2 text-sm"
+							value={subjectId}
+							onChange={(e) => setSubjectId(e.target.value)}
+						>
+							<option value="">Select subject</option>
+							{mockSubjects.map((s) => (
+								<option key={s.subjectId} value={s.subjectId}>
+									{s.subjectName}
+								</option>
+							))}
+						</select>
 					</div>
 				</form>
 				<div className="flex justify-end gap-2 mt-4">
