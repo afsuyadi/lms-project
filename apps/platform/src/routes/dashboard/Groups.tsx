@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Ban, Pencil, PlusCircle } from "lucide-react";
-import { useState } from "react";
-import { mockGroups, mockSubjects, mockTeachers } from "../../lib/mockData";
+import { useEffect, useRef, useState } from "react";
+import {
+	mockGroups,
+	mockStudents,
+	mockSubjects,
+	mockTeachers,
+} from "../../lib/mockData";
 
 export const Route = createFileRoute("/dashboard/Groups")({
 	component: RouteComponent,
@@ -9,8 +14,34 @@ export const Route = createFileRoute("/dashboard/Groups")({
 
 function CreateGroupModal({ onClose }: { onClose: () => void }) {
 	const [groupName, setGroupName] = useState("");
-	const [subjectId, setSubjectId] = useState(0);
-	const [teacherId, setTeacherId] = useState(0);
+	const [subjectId, setSubjectId] = useState("");
+	const [teacherId, setTeacherId] = useState("");
+	const [selectedStudentIds, setSelectedStudentIds] = useState<string[]>([]);
+	const [isStudentDropdownOpen, setIsStudentDropdownOpen] = useState<
+		true | false
+	>(false);
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	function toggleStudent(id: string) {
+		setSelectedStudentIds((prev) =>
+			prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id],
+		);
+	}
+
+	useEffect(() => {
+		function handleClickOutside(e: MouseEvent) {
+			if (
+				dropdownRef.current &&
+				!dropdownRef.current.contains(e.target as Node)
+			) {
+				setIsStudentDropdownOpen(false);
+			}
+		}
+		if (isStudentDropdownOpen) {
+			document.addEventListener("click", handleClickOutside);
+		}
+		return () => document.removeEventListener("click", handleClickOutside);
+	}, [isStudentDropdownOpen]);
 
 	return (
 		<div
@@ -58,6 +89,43 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 								</option>
 							))}
 						</select>
+						<div ref={dropdownRef}>
+							<button
+								type="button"
+								tabIndex={0}
+								onClick={() => setIsStudentDropdownOpen((prev) => !prev)}
+								onKeyDown={(e) =>
+									e.key === "Enter" && setIsStudentDropdownOpen((prev) => !prev)
+								}
+								className="border rounded-md p-2 text-sm cursor-pointer min-h-9 w-full text-left"
+							>
+								{selectedStudentIds.length === 0
+									? "Select Students"
+									: mockStudents
+											.filter((s) => selectedStudentIds.includes(s.studentId))
+											.map((s) => s.studentName)
+											.join(", ")}
+							</button>
+							{isStudentDropdownOpen && (
+								<div className="border rounded-md mt-1 p-2 grid grid-cols-3 gap-1 max-h-30 overflow-y-auto">
+									{mockStudents.map((s) => (
+										<label
+											key={s.studentId}
+											onClick={(e) => e.stopPropagation()}
+											onKeyDown={(e) => e.stopPropagation()}
+											className="flex items-center gap-2 text-sm cursor-pointer hover:text-green-800 hover:underline"
+										>
+											<input
+												type="checkbox"
+												onChange={() => toggleStudent(s.studentId)}
+												checked={selectedStudentIds.includes(s.studentId)}
+											/>
+											{s.studentName}
+										</label>
+									))}
+								</div>
+							)}
+						</div>
 					</div>
 				</form>
 				<div className="flex justify-end gap-2 mt-4">
