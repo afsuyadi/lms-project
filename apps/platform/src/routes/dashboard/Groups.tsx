@@ -184,7 +184,10 @@ function RouteComponent() {
 					.filter(
 						(g) =>
 							g.groupName.toLowerCase().includes(selectedQuery.toLowerCase()) ||
-							g.teacherName.toLowerCase().includes(selectedQuery.toLowerCase()),
+							g.teacherName
+								.toLowerCase()
+								.includes(selectedQuery.toLowerCase()) ||
+							g.subjectName.toLowerCase().includes(selectedQuery.toLowerCase()),
 					)
 					.map((g, i) => (
 						<div
