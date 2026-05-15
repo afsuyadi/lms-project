@@ -324,7 +324,7 @@
 - ✅ Hour 9 — Dashboard: Student View (completed 2026-05-01)
 
 **Phase 3 — Class & Enrollment UI**
-- 🔄 Hour 10 — Groups List Page (in progress — route at routes/dashboard/Groups.tsx; cards done with animations, admin Edit/Deactivate buttons, Create Group modal with group name + subject + teacher + custom multi-select student dropdown in progress)
+- 🔄 Hour 10 — Groups List Page (in progress — cards done with animations, admin Edit/Deactivate buttons, Create Group modal done: group name + subject dropdown + teacher dropdown + custom multi-select student dropdown; remaining: search/filter bar, role-based visibility, wire Create button)
 - ❌ Hour 11 — Class Detail Page
 - ❌ Hour 12 — User Management Page (Admin)
 - ❌ Hour 13 — Enrollment Flow UI
