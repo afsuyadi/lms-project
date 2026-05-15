@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Ban, Pencil, PlusCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { mockUser } from "../../lib/mockAuth";
 import {
 	mockGroups,
 	mockStudents,
@@ -203,19 +204,22 @@ function RouteComponent() {
 					className="border rounded-md p-2"
 				/>
 			</div>
-			<div className="flex justify-items-start mb-4">
-				<button
-					type="button"
-					className="flex font-bold items-center gap-2 cursor-pointer hover:text-white hover:bg-green-800 hover:rounded-md p-2"
-					onClick={() => setIsModalOpen(true)}
-				>
-					<PlusCircle
-						size={18}
-						className="cursor-pointer hover:bg-yellow-400 rounded-full"
-					/>
-					Create Group
-				</button>
-			</div>
+			{mockUser.role === "admin" && (
+				<div className="flex justify-items-start mb-4">
+					<button
+						type="button"
+						className="flex font-bold items-center gap-2 cursor-pointer hover:text-white hover:bg-green-800 hover:rounded-md p-2"
+						onClick={() => setIsModalOpen(true)}
+					>
+						<PlusCircle
+							size={18}
+							className="cursor-pointer hover:bg-yellow-400 rounded-full"
+						/>
+						Create Group
+					</button>
+				</div>
+			)}
+
 			<div className="grid grid-cols-3 gap-4">
 				{groups
 					.filter(
@@ -248,10 +252,12 @@ function RouteComponent() {
 									{g.studentIds.length === 1 ? "Student" : "Students"}
 								</div>
 							</div>
-							<div className="flex justify-end gap-3">
-								<Pencil size="18" className="hover:text-yellow-400" />
-								<Ban size="18" className="hover:text-yellow-400" />
-							</div>
+							{mockUser.role === "admin" && (
+								<div className="flex justify-end gap-3">
+									<Pencil size="18" className="hover:text-yellow-400" />
+									<Ban size="18" className="hover:text-yellow-400" />
+								</div>
+							)}
 						</div>
 					))}
 			</div>
