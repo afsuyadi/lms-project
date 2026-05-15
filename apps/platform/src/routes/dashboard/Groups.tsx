@@ -12,7 +12,21 @@ export const Route = createFileRoute("/dashboard/Groups")({
 	component: RouteComponent,
 });
 
-function CreateGroupModal({ onClose }: { onClose: () => void }) {
+function CreateGroupModal({
+	onClose,
+	onSubmit,
+}: {
+	onClose: () => void;
+	onSubmit: (newGroup: {
+		groupId: string;
+		groupName: string;
+		subjectId: string;
+		teacherId: string;
+		teacherName: string;
+		studentIds: [];
+		isActive: true;
+	}) => void;
+}) {
 	const [groupName, setGroupName] = useState("");
 	const [subjectId, setSubjectId] = useState("");
 	const [teacherId, setTeacherId] = useState("");
@@ -138,6 +152,22 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 					</button>
 					<button
 						type="button"
+						onClick={() =>
+							onSubmit({
+								groupId: Date.now().toString(),
+								groupName,
+								subjectId,
+								subjectName: mockSubjects.find((s) => subjectId === s.subjectId)
+									?.subjectName,
+								teacherId,
+								teacherName: mockTeachers.find((t) => teacherId === t.teacherId)
+									?.teacherName,
+								studentIds: mockStudents.filter((s) =>
+									selectedStudentIds.includes(s.studentId),
+								),
+								isActive: true,
+							})
+						}
 						className="cursor-pointer rounded-lg border shadow-2xl p-2 hover:bg-green-800 hover:text-white"
 					>
 						Create
@@ -150,16 +180,23 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 function RouteComponent() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedQuery, setSelectedQuery] = useState("");
+	const [groups, setGroups] = useState(mockGroups);
 
 	return (
 		<section className="p-6">
 			{isModalOpen && (
-				<CreateGroupModal onClose={() => setIsModalOpen(false)} />
+				<CreateGroupModal
+					onClose={() => setIsModalOpen(false)}
+					onSubmit={(newGroup) => {
+						setGroups((prev) => [...prev, newGroup]);
+						setIsModalOpen(false);
+					}}
+				/>
 			)}
 			<div className="flex justify-between items-center mb-4">
 				<h1 className="text-xl font-bold">Groups</h1>
 				<input
-					type="input"
+					type="text"
 					placeholder="Search Group / Teacher / Subject ..."
 					value={selectedQuery}
 					onChange={(e) => setSelectedQuery(e.target.value)}
@@ -169,7 +206,7 @@ function RouteComponent() {
 			<div className="flex justify-items-start mb-4">
 				<button
 					type="button"
-					className="flex items-center gap-2 cursor-pointer hover:text-white hover:bg-green-800 hover:rounded-md p-2"
+					className="flex font-bold items-center gap-2 cursor-pointer hover:text-white hover:bg-green-800 hover:rounded-md p-2"
 					onClick={() => setIsModalOpen(true)}
 				>
 					<PlusCircle
@@ -180,7 +217,7 @@ function RouteComponent() {
 				</button>
 			</div>
 			<div className="grid grid-cols-3 gap-4">
-				{mockGroups
+				{groups
 					.filter(
 						(g) =>
 							g.groupName.toLowerCase().includes(selectedQuery.toLowerCase()) ||
