@@ -149,6 +149,7 @@ function CreateGroupModal({ onClose }: { onClose: () => void }) {
 }
 function RouteComponent() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [selectedQuery, setSelectedQuery] = useState("");
 
 	return (
 		<section className="p-6">
@@ -157,9 +158,18 @@ function RouteComponent() {
 			)}
 			<div className="flex justify-between items-center mb-4">
 				<h1 className="text-xl font-bold">Groups</h1>
+				<input
+					type="input"
+					placeholder="Search Group / Teacher / Subject ..."
+					value={selectedQuery}
+					onChange={(e) => setSelectedQuery(e.target.value)}
+					className="border rounded-md p-2"
+				/>
+			</div>
+			<div className="flex justify-items-start mb-4">
 				<button
 					type="button"
-					className="flex items-center gap-2"
+					className="flex items-center gap-2 cursor-pointer hover:text-white hover:bg-green-800 hover:rounded-md p-2"
 					onClick={() => setIsModalOpen(true)}
 				>
 					<PlusCircle
@@ -170,34 +180,40 @@ function RouteComponent() {
 				</button>
 			</div>
 			<div className="grid grid-cols-3 gap-4">
-				{mockGroups.map((g, i) => (
-					<div
-						key={g.groupId}
-						className={`animate-fade-slide-up
+				{mockGroups
+					.filter(
+						(g) =>
+							g.groupName.toLowerCase().includes(selectedQuery.toLowerCase()) ||
+							g.teacherName.toLowerCase().includes(selectedQuery.toLowerCase()),
+					)
+					.map((g, i) => (
+						<div
+							key={g.groupId}
+							className={`animate-fade-slide-up
 					border rounded-lg
 					text-white p-5 cursor-pointer
 					transition-all duration-200
 					hover:-translate-y-1 hover:scale-105
 					hover:shadow-xl flex flex-col gap-3
 				${g.isActive === false ? "bg-gray-400" : "bg-green-800"}`}
-						style={{ animationDelay: `${i * 80}ms` }}
-					>
-						<div className="font-semibold">{g.groupName}</div>
-						<div className="text-sm">{g.teacherName}</div>
-						<div className="flex flex-row gap-3">
-							<div className="text-4xl text-white font-bold hover:text-yellow-400">
-								{g.studentIds.length}{" "}
+							style={{ animationDelay: `${i * 80}ms` }}
+						>
+							<div className="font-semibold">{g.groupName}</div>
+							<div className="text-sm">{g.teacherName}</div>
+							<div className="flex flex-row gap-3">
+								<div className="text-4xl text-white font-bold hover:text-yellow-400">
+									{g.studentIds.length}{" "}
+								</div>
+								<div className="items-baseline">
+									{g.studentIds.length === 1 ? "Student" : "Students"}
+								</div>
 							</div>
-							<div className="items-baseline">
-								{g.studentIds.length === 1 ? "Student" : "Students"}
+							<div className="flex justify-end gap-3">
+								<Pencil size="18" className="hover:text-yellow-400" />
+								<Ban size="18" className="hover:text-yellow-400" />
 							</div>
 						</div>
-						<div className="flex justify-end gap-3">
-							<Pencil size="18" className="hover:text-yellow-400" />
-							<Ban size="18" className="hover:text-yellow-400" />
-						</div>
-					</div>
-				))}
+					))}
 			</div>
 		</section>
 	);
