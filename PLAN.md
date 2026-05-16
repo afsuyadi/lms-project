@@ -325,8 +325,9 @@
 
 **Phase 3 — Class & Enrollment UI**
 - ✅ Hour 10 — Groups List Page (completed — cards with animations, search/filter bar, role-based visibility, Create Group modal with all fields + custom multi-select student dropdown + working Create button)
+- ⚠️ TODO: Edit Group + Deactivate Group not yet implemented (Pencil + Ban icons are present but not wired)
 - ❌ Hour 11 — Class Detail Page
-- ❌ Hour 12 — User Management Page (Admin)
+- 🔄 Hour 12 — User Management Page (in progress — table with role/status/subject badges done; Add Teacher + Add Student modal pending; Edit + Deactivate User not yet implemented)
 - ❌ Hour 13 — Enrollment Flow UI
 
 **Phase 4 — Assignment UI**
