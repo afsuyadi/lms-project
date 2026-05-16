@@ -13,9 +13,10 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as DashboardProfileRouteImport } from './routes/dashboard/Profile'
-import { Route as DashboardGroupsRouteImport } from './routes/dashboard/Groups'
-import { Route as DashboardAssignmentsRouteImport } from './routes/dashboard/Assignments'
+import { Route as DashboardUsersRouteImport } from './routes/dashboard/users'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard/profile'
+import { Route as DashboardGroupsRouteImport } from './routes/dashboard/groups'
+import { Route as DashboardAssignmentsRouteImport } from './routes/dashboard/assignments'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -37,19 +38,24 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardUsersRoute = DashboardUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardProfileRoute = DashboardProfileRouteImport.update({
-  id: '/Profile',
-  path: '/Profile',
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardGroupsRoute = DashboardGroupsRouteImport.update({
-  id: '/Groups',
-  path: '/Groups',
+  id: '/groups',
+  path: '/groups',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardAssignmentsRoute = DashboardAssignmentsRouteImport.update({
-  id: '/Assignments',
-  path: '/Assignments',
+  id: '/assignments',
+  path: '/assignments',
   getParentRoute: () => DashboardRoute,
 } as any)
 
@@ -57,17 +63,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
-  '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Groups': typeof DashboardGroupsRoute
-  '/dashboard/Profile': typeof DashboardProfileRoute
+  '/dashboard/assignments': typeof DashboardAssignmentsRoute
+  '/dashboard/groups': typeof DashboardGroupsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Groups': typeof DashboardGroupsRoute
-  '/dashboard/Profile': typeof DashboardProfileRoute
+  '/dashboard/assignments': typeof DashboardAssignmentsRoute
+  '/dashboard/groups': typeof DashboardGroupsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
@@ -75,9 +83,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
-  '/dashboard/Assignments': typeof DashboardAssignmentsRoute
-  '/dashboard/Groups': typeof DashboardGroupsRoute
-  '/dashboard/Profile': typeof DashboardProfileRoute
+  '/dashboard/assignments': typeof DashboardAssignmentsRoute
+  '/dashboard/groups': typeof DashboardGroupsRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/users': typeof DashboardUsersRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
@@ -86,26 +95,29 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/login'
-    | '/dashboard/Assignments'
-    | '/dashboard/Groups'
-    | '/dashboard/Profile'
+    | '/dashboard/assignments'
+    | '/dashboard/groups'
+    | '/dashboard/profile'
+    | '/dashboard/users'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
-    | '/dashboard/Assignments'
-    | '/dashboard/Groups'
-    | '/dashboard/Profile'
+    | '/dashboard/assignments'
+    | '/dashboard/groups'
+    | '/dashboard/profile'
+    | '/dashboard/users'
     | '/dashboard'
   id:
     | '__root__'
     | '/'
     | '/dashboard'
     | '/login'
-    | '/dashboard/Assignments'
-    | '/dashboard/Groups'
-    | '/dashboard/Profile'
+    | '/dashboard/assignments'
+    | '/dashboard/groups'
+    | '/dashboard/profile'
+    | '/dashboard/users'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
@@ -145,24 +157,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/dashboard/Profile': {
-      id: '/dashboard/Profile'
-      path: '/Profile'
-      fullPath: '/dashboard/Profile'
+    '/dashboard/users': {
+      id: '/dashboard/users'
+      path: '/users'
+      fullPath: '/dashboard/users'
+      preLoaderRoute: typeof DashboardUsersRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
       preLoaderRoute: typeof DashboardProfileRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/dashboard/Groups': {
-      id: '/dashboard/Groups'
-      path: '/Groups'
-      fullPath: '/dashboard/Groups'
+    '/dashboard/groups': {
+      id: '/dashboard/groups'
+      path: '/groups'
+      fullPath: '/dashboard/groups'
       preLoaderRoute: typeof DashboardGroupsRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/dashboard/Assignments': {
-      id: '/dashboard/Assignments'
-      path: '/Assignments'
-      fullPath: '/dashboard/Assignments'
+    '/dashboard/assignments': {
+      id: '/dashboard/assignments'
+      path: '/assignments'
+      fullPath: '/dashboard/assignments'
       preLoaderRoute: typeof DashboardAssignmentsRouteImport
       parentRoute: typeof DashboardRoute
     }
@@ -173,6 +192,7 @@ interface DashboardRouteChildren {
   DashboardAssignmentsRoute: typeof DashboardAssignmentsRoute
   DashboardGroupsRoute: typeof DashboardGroupsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardUsersRoute: typeof DashboardUsersRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
@@ -180,6 +200,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardAssignmentsRoute: DashboardAssignmentsRoute,
   DashboardGroupsRoute: DashboardGroupsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
+  DashboardUsersRoute: DashboardUsersRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 

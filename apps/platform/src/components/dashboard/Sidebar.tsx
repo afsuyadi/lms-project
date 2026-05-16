@@ -24,8 +24,8 @@ const navItems = [
 	{
 		id: 6,
 		icon: "🗃️",
-		title: "Resources",
-		path: "/resources",
+		title: "Users",
+		path: "/dashboard/users",
 	},
 	{
 		id: 7,
