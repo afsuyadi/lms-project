@@ -9,7 +9,7 @@ import {
 	mockTeachers,
 } from "../../lib/mockData";
 
-export const Route = createFileRoute("/dashboard/Groups")({
+export const Route = createFileRoute("/dashboard/groups")({
 	component: RouteComponent,
 });
 
