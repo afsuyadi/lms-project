@@ -50,7 +50,7 @@ function RouteComponent() {
 											</div>
 										) : (
 											<div className="flex flex-row gap-3">
-												<span>"-"</span>
+												<span>-</span>
 											</div>
 										)}
 									</td>
@@ -62,7 +62,7 @@ function RouteComponent() {
 											</div>
 										) : (
 											<div className="flex flex-row gap-3">
-												<span>"-"</span>
+												<span>-</span>
 											</div>
 										)}
 									</td>
